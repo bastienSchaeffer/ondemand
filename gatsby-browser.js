@@ -2,7 +2,7 @@ import "isomorphic-fetch"
 import React from "react"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
-import Layout from "./src/components/Layout"
+import Layout from "./src/components/layout"
 
 const client = new ApolloClient({
   uri: "https://graphql.fauna.com/graphql",
