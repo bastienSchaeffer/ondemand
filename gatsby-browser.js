@@ -1,6 +1,8 @@
+import "isomorphic-fetch"
 import React from "react"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
+import Layout from "./src/components/Layout"
 
 const client = new ApolloClient({
   uri: "https://graphql.fauna.com/graphql",
@@ -12,6 +14,10 @@ const client = new ApolloClient({
     })
   },
 })
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>
+}
 
 export const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>{element}</ApolloProvider>
