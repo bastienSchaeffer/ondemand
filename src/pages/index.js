@@ -47,19 +47,19 @@ const GET_REVIEWS = gql`
 
 const IndexPage = props => {
   console.log("--------- PROPS")
-  // console.log(props)
-  // const [productId, setProductId] = useState(null)
-  // const [productToReviews, setProductToReviews] = useState({})
+  console.log(props)
+  const [productId, setProductId] = useState(null)
+  const [productToReviews, setProductToReviews] = useState({})
 
-  // const { loading, data } = useQuery(GET_REVIEWS, {
-  //   variables: { productId },
-  //   skip: !productId,
-  // })
-  // if (!loading && data) {
-  //   productToReviews[productId] = data.findProductByID.reviews.data
-  //   setProductToReviews(productToReviews)
-  //   setProductId(null)
-  // }
+  const { loading, data } = useQuery(GET_REVIEWS, {
+    variables: { productId },
+    skip: !productId,
+  })
+  if (!loading && data) {
+    productToReviews[productId] = data.findProductByID.reviews.data
+    setProductToReviews(productToReviews)
+    setProductId(null)
+  }
 
   return (
     <Layout>
@@ -73,13 +73,12 @@ const IndexPage = props => {
         </span>{" "}
       </div>
       <div className="product-card-container">
-        <h1>hey</h1>
-        {/* {listProductsAndReviews(
+        {listProductsAndReviews(
           props.data.fauna.allProducts.data,
           productToReviews,
           setProductId,
           props.data.allPrintfulProduct.nodes
-        )} */}
+        )}
       </div>
     </Layout>
   )
